@@ -1,0 +1,11 @@
+{
+  "title": "Vienxa Group",
+  "description": "This platform serves as a central hub for VIENXA GROUP, allowing users to navigate seamlessly to various business sectors while reinforcing brand identity.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
