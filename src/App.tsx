@@ -1,9 +1,4 @@
-import {
-  useEffect,
-  useState,
-  type FormEvent,
-  type ReactNode,
-} from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import logo from "./imports/Logo_for__Vienxa_Group.jpg";
 
 type Unit = {
@@ -290,7 +285,11 @@ function Header({
 
   return (
     <header className={`site-header ${compact ? "site-header--compact" : ""}`}>
-      <button className="brand" onClick={onHome} aria-label="Kembali ke beranda">
+      <button
+        className="brand"
+        onClick={onHome}
+        aria-label="Kembali ke beranda"
+      >
         <span className="brand-mark">
           <img
             src={new URL("./imports/Logo_RB.png", import.meta.url).href}
@@ -303,7 +302,10 @@ function Header({
         </span>
       </button>
 
-      <nav className={menuOpen ? "nav nav--open" : "nav"} aria-label="Navigasi utama">
+      <nav
+        className={menuOpen ? "nav nav--open" : "nav"}
+        aria-label="Navigasi utama"
+      >
         <button onClick={onHome}>Beranda</button>
         <button onClick={onExplore}>Unit Usaha</button>
         <a href="#tentang" onClick={() => setMenuOpen(false)}>
@@ -334,7 +336,9 @@ function Header({
 
 function Home({ onSelect }: { onSelect: (unit: Unit) => void }) {
   const scrollToUnits = () =>
-    document.getElementById("unit-usaha")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("unit-usaha")
+      ?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <main>
@@ -349,8 +353,8 @@ function Home({ onSelect }: { onSelect: (unit: Unit) => void }) {
             <span>menciptakan makna.</span>
           </h1>
           <p className="hero-description">
-            VIENXA Group menaungi berbagai unit usaha yang hadir untuk memperkaya
-            keseharian—dari rasa, gaya, hingga karya.
+            VIENXA Group menaungi berbagai unit usaha yang hadir untuk
+            memperkaya keseharian—dari rasa, gaya, hingga karya.
           </p>
           <div className="hero-actions">
             <button className="primary-button" onClick={scrollToUnits}>
@@ -416,7 +420,7 @@ function Home({ onSelect }: { onSelect: (unit: Unit) => void }) {
 
       <section className="about-section" id="tentang">
         <div className="about-visual">
-          <span className="block w-[52%] max-w-[340px]">
+          <span className="block w-[52%] max-w-85">
             <img
               className="block h-auto w-full mix-blend-screen"
               src={
@@ -460,7 +464,11 @@ function Home({ onSelect }: { onSelect: (unit: Unit) => void }) {
         <p className="eyebrow">Mari berkolaborasi</p>
         <h2>Punya gagasan untuk tumbuh bersama?</h2>
         <div className="contact-details">
-          <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer">
+          <a
+            href={`https://wa.me/${contact.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <span>WhatsApp</span>
             {contact.phone}
           </a>
@@ -663,7 +671,9 @@ function CheckoutModal({
                 <i />
               </label>
               <label
-                className={paymentMethod === "confirmation" ? "is-selected" : ""}
+                className={
+                  paymentMethod === "confirmation" ? "is-selected" : ""
+                }
               >
                 <input
                   type="radio"
@@ -720,7 +730,9 @@ function CheckoutModal({
               </div>
               <div>
                 <span>Pengiriman</span>
-                <strong>{shipping === 0 ? "Gratis" : formatPrice(shipping)}</strong>
+                <strong>
+                  {shipping === 0 ? "Gratis" : formatPrice(shipping)}
+                </strong>
               </div>
               <div className="grand-total">
                 <span>Total</span>
@@ -775,10 +787,7 @@ function UnitSite({ unit, onBack }: { unit: Unit; onBack: () => void }) {
   };
 
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const formatPrice = (price: number) =>
     new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -850,8 +859,8 @@ function UnitSite({ unit, onBack }: { unit: Unit; onBack: () => void }) {
             <h2>Produk & paket</h2>
           </div>
           <p>
-            Pilih satu atau beberapa produk, lalu bayar langsung di website
-            atau lanjutkan pemesanan melalui WhatsApp.
+            Pilih satu atau beberapa produk, lalu bayar langsung di website atau
+            lanjutkan pemesanan melalui WhatsApp.
           </p>
         </div>
         <div className="product-grid">
@@ -959,13 +968,17 @@ export default function App() {
 
   const goHome = () => {
     setActiveUnit(null);
-    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    requestAnimationFrame(() =>
+      window.scrollTo({ top: 0, behavior: "smooth" }),
+    );
   };
 
   const goToUnits = () => {
     setActiveUnit(null);
     requestAnimationFrame(() =>
-      document.getElementById("unit-usaha")?.scrollIntoView({ behavior: "smooth" }),
+      document
+        .getElementById("unit-usaha")
+        ?.scrollIntoView({ behavior: "smooth" }),
     );
   };
 
@@ -986,7 +999,9 @@ export default function App() {
           VIENXA <span>GROUP</span>
         </button>
         <div className="footer-contact">
-          <a href={`tel:${contact.phone.replace(/\s|-/g, "")}`}>{contact.phone}</a>
+          <a href={`tel:${contact.phone.replace(/\s|-/g, "")}`}>
+            {contact.phone}
+          </a>
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
         </div>
         <span>© 2026 VIENXA Group</span>
