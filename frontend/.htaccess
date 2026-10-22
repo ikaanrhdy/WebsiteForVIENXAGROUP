@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    Options -MultiViews -Indexes
+    RewriteEngine On
+
+    # Wajib: teruskan header Authorization (token login)
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # 1) Semua alamat /api/... dikirim ke Laravel
+    RewriteRule ^api(/.*)?$ index.php [L]
+
+    # 2) File/folder yang benar-benar ada (assets, gambar) disajikan langsung
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # 3) Sisanya (/web-it, /login, /admin, ...) dikirim ke React
+    RewriteRule ^ index.html [L]
+</IfModule>
